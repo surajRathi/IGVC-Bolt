@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<robot name="virat" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find igvc_bolt)/urdf/bolt.gazebo.xacro" />
+    <xacro:include filename="$(find igvc_bolt)/urdf/materials.xacro" />
+
+    <link name="base_link"></link>
+
+    <!-- Chassis -->
+    <link name="chassis">
+
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="410" />
+            <inertia ixx="289.972" ixy="-5.141" ixz="-0.603" iyy="375.516" iyz="0.961" izz="179.308" />
+        </inertial>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://igvc_bolt/meshes/chassis_2.dae" scale="1.0 1.0 1.0" />
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://igvc_bolt/meshes/chassis_2.dae" scale="1.0 1.0 1.0" />
+            </geometry>
+        </visual>
+
+    </link>
+
+    <joint name="base_chassis_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="chassis" />
+        <origin xyz="0 0 0.2192" rpy="0 0 0" />
+    </joint>
+    <!-- ********************************************************************************************* -->
+
+
+    <!-- Rear wheel - Bicycle model -->
+    <link name="rear_wheel">
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.002433" ixy="0" ixz="0" iyy="0.0032" iyz="0" izz="0.002433" />
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.08" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.08" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="rear_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" />
+        <parent link="chassis" />
+        <child link="rear_wheel" />
+        <origin xyz="-1.0 0 0.01" rpy="0 0 0" />
+    </joint>
+    <transmission name="rear_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="rear_wheel_joint_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="rear_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+    <!-- *************************************************************************************************** -->
+
+
+
+    <!-- Rear wheels (Left & Right) - Steering Model -->
+    <link name="rear_left_wheel">
+        <inertial>
+            <mass value="6" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.088186" ixy="0" ixz="0" iyy="0.156773" iyz="0" izz="0.088186" />
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.14" radius="0.2286" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.14" radius="0.2286" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="rear_left_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" />
+        <parent link="chassis" />
+        <child link="rear_left_wheel" />
+        <origin xyz="-1.05 0.7 0.01" rpy="0 0 0" />
+    </joint>
+
+
+    <link name="rear_right_wheel">
+        <inertial>
+            <mass value="6" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.088186" ixy="0" ixz="0" iyy="0.156773" iyz="0" izz="0.088186" />
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.14" radius="0.2286" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.14" radius="0.2286" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="rear_right_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" />
+        <parent link="chassis" />
+        <child link="rear_right_wheel" />
+        <origin xyz="-1.05 -0.7 0.01" rpy="0 0 0" />
+    </joint>
+
+    <transmission name="rear_right_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rear_right_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rear_right_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="rear_left_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rear_left_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rear_left_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- ********************************************************************************************* -->
+
+
+    
+    <!-- Front steer - Bicycle Model -->
+    <link name="front_steer">
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.006" ixy="0" ixz="0" iyy="0.006" iyz="0" izz="0.001" />
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.02" radius="0.05" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.02" radius="0.05" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="front_steer_joint" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="chassis" />
+        <child link="front_steer" />
+        <origin xyz="0.85 0 0.3" />
+        <limit effort="7.0" velocity="${200.0*3.1415/180.0*0.95}" />
+    </joint>
+    <transmission name="front_steer_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="front_steer_joint_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="front_steer_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+    <!-- ************************************************************************************* -->
+
+
+    <!-- Front left steer and wheel links-->
+    <link name="front_left_steer">
+        <inertial>
+            <mass value="1.0" />
+            <inertia ixx="0.006" ixy="0.0" ixz="0.0" iyy="0.006" iyz="0.0" izz="0.001" />
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.05" length="0.02" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.05" length="0.02" />
+            </geometry>
+        </visual>
+    </link>
+    <joint name="front_left_steer_joint" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="chassis" />
+        <child link="front_left_steer" />
+        <origin xyz="0.85 0.7 0.3" rpy="0 0 0" />
+        <limit effort="7.0" velocity="${200.0*3.1415/180.0*0.95}" />
+    </joint>
+
+    <transmission name="front_left_steer_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="front_left_steer_joint_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="front_left_steer_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <link name="front_left_wheel">
+        <inertial>
+            <mass value="6" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.088186" ixy="0" ixz="0" iyy="0.156773" iyz="0" izz="0.088186" />
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.14" radius="0.2286" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.14" radius="0.2286" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="front_left_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" />
+        <parent link="front_left_steer" />
+        <child link="front_left_wheel" />
+        <origin xyz="0 0 -0.29" rpy="0 0 0" />
+    </joint>
+
+    <transmission name="front_left_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_left_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="front_left_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- **************************************************************************************** -->
+
+
+    <!-- Front right steer and wheel links -->
+    <link name="front_right_steer">
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.006" ixy="0" ixz="0" iyy="0.006" iyz="0" izz="0.001" />
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.02" radius="0.05" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.02" radius="0.05" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="front_right_steer_joint" type="continuous">
+        <axis xyz="0 0 1" />
+        <parent link="chassis" />
+        <child link="front_right_steer" />
+        <origin xyz="0.85 -0.7 0.3" rpy="0 0 0" />
+        <limit effort="7.0"  velocity="${200.0*3.1415/180.0*0.95}" />
+    </joint>
+
+    <transmission name="front_right_steer_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="front_right_steer_joint_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="front_right_steer_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+    
+    <link name="front_right_wheel">
+        <inertial>
+            <mass value="6" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.088186" ixy="0" ixz="0" iyy="0.156773" iyz="0" izz="0.088186" />
+        </inertial>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.14" radius="0.2286" />
+            </geometry>
+        </collision>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <geometry>
+                <cylinder length="0.14" radius="0.2286" />
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="front_right_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" />
+        <parent link="front_right_steer" />
+        <child link="front_right_wheel" />
+        <origin xyz="0 0 -0.29" rpy="0 0 0" />
+    </joint>
+
+    <transmission name="front_right_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_right_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="front_right_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- ************************************************************************************************************* -->
+
+
+</robot>
