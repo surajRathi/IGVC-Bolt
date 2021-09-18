@@ -20,5 +20,8 @@ roslaunch igvc_bolt display.launch
 * Four wheels ( front & back )
 * Two front steers
 * Front steer and Rear wheel ( Bicycle model )
-##### TF Tree
+* #### TF Tree
 <img src="https://user-images.githubusercontent.com/79641410/133905922-143effc9-71ff-4827-a306-c62fd6a0e8e3.png" width="550"> <br />
+
+### Controller
+Ackermann steering model is implemented using `ROS Control` with [`steer_bot_hardware_gazebo`](http://wiki.ros.org/steer_bot_hardware_gazebo) and [`ackermann_steer_controller`](http://wiki.ros.org/ackermann_steering_controller)
