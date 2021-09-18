@@ -92,9 +92,9 @@
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <cylinder length="0.14" radius="0.2286" />
+                <mesh filename="package://igvc_bolt/meshes/Wheel.dae" scale="1.8 1.8 1.8" />
             </geometry>
         </visual>
     </link>
@@ -120,9 +120,9 @@
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <cylinder length="0.14" radius="0.2286" />
+                <mesh filename="package://igvc_bolt/meshes/Wheel.dae" scale="1.8 1.8 1.8" />
             </geometry>
         </visual>
     </link>
@@ -251,9 +251,9 @@
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <cylinder length="0.14" radius="0.2286" />
+                <mesh filename="package://igvc_bolt/meshes/Wheel.dae" scale="1.8 1.8 1.8" />
             </geometry>
         </visual>
     </link>
@@ -331,9 +331,9 @@
             </geometry>
         </collision>
         <visual>
-            <origin xyz="0 0 0" rpy="1.57075 0 0" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <cylinder length="0.14" radius="0.2286" />
+                <mesh filename="package://igvc_bolt/meshes/Wheel.dae" scale="1.8 1.8 1.8" />
             </geometry>
         </visual>
     </link>

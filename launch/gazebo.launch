@@ -7,7 +7,7 @@
     <arg name="cmd_timeout" default="0.5"/>
     <arg name="x" default="0.0"/>
     <arg name="y" default="0.0"/>
-    <arg name="z" default="1.0" />
+    <arg name="z" default="0.05" />
     <arg name="roll" default="0.0"/>
     <arg name="pitch" default="0.0"/>
     <arg name="yaw" default="0.0"/>
@@ -24,9 +24,9 @@
 
         <!-- Load ros_controllers configuration parameters -->
         <rosparam file="$(find igvc_bolt)/config/ackermann_controller.yaml" command="load" ns="$(arg namespace)" />
-        <rosparam file="$(find igvc_bolt)/config/pids.yaml" command="load" ns="$(arg namespace)" />
-        <rosparam file="$(find igvc_bolt)/config/ctrl_joint_state_publisher.yaml" command="load" ns="$(arg namespace)" />
-        <rosparam file="$(find igvc_bolt)/config/ctrl_steer_bot_hardware_gazebo.yaml" command="load" ns="$(arg namespace)" />
+        <rosparam file="$(find igvc_bolt)/config/pid.yaml" command="load" ns="$(arg namespace)" />
+        <rosparam file="$(find igvc_bolt)/config/joint_state_publisher.yaml" command="load" ns="$(arg namespace)" />
+        <rosparam file="$(find igvc_bolt)/config/steer_bot_hardware_gazebo.yaml" command="load" ns="$(arg namespace)" />
 
         <!-- Spawn the controllers -->
         <node pkg="controller_manager" type="spawner" name="controller_spawner" ns="$(arg namespace)"
