@@ -15,7 +15,7 @@ roslaunch igvc_bolt display.launch
 <img src="https://user-images.githubusercontent.com/79641410/133905351-7a96e0bd-31d5-49a0-97f8-bdc45e899926.png" width="350"> <br />
 
 ## Robot components
-### Collision objects
+## Collision objects
 * Chassis
 * Four wheels ( front & back )
 * Two front steers
@@ -23,5 +23,13 @@ roslaunch igvc_bolt display.launch
 * ##### TF Tree
 <img src="https://user-images.githubusercontent.com/79641410/133905922-143effc9-71ff-4827-a306-c62fd6a0e8e3.png" width="550"> <br />
 
-### Controller
+## Controller
+
 Ackermann steering model is implemented using `ROS Control` with [`steer_bot_hardware_gazebo`](http://wiki.ros.org/steer_bot_hardware_gazebo) and [`ackermann_steer_controller`](http://wiki.ros.org/ackermann_steering_controller)
+* ##### Subscribed topics
+  - `cmd_vel`
+* ##### Published topics
+  - `odom`
+  - `tf` <br />
+
+Note: Line 63 in [`steer_bot_hardware_gazebo.cpp`](https://github.com/CIR-KIT/steer_drive_ros/tree/kinetic-devel/steer_bot_hardware_gazebo) should be [modified](https://github.com/ros-simulation/gazebo_ros_pkgs/issues/487) before compiling `steer_bot_hardware_gazebo` package.
