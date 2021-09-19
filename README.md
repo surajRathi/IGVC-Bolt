@@ -32,7 +32,7 @@ Ackermann steering model is implemented using `ROS Control` with [`steer_bot_har
   - `odom`
   - `tf` <br />
 
-Note: Line 63 in [`steer_bot_hardware_gazebo.cpp`](https://github.com/CIR-KIT/steer_drive_ros/tree/kinetic-devel/steer_bot_hardware_gazebo) should be [modified](https://github.com/ros-simulation/gazebo_ros_pkgs/issues/487) before compiling `steer_bot_hardware_gazebo` package.
+Note: Line 63 in [`steer_bot_hardware_gazebo.cpp`](https://github.com/CIR-KIT/steer_drive_ros/blob/kinetic-devel/steer_bot_hardware_gazebo/src/steer_bot_hardware_gazebo.cpp) should be [modified](https://github.com/ros-simulation/gazebo_ros_pkgs/issues/487) before compiling `steer_bot_hardware_gazebo` package.
 
 ## Tasks
 - [x] Import Chassis from fusion360
