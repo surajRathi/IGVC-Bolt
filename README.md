@@ -41,6 +41,6 @@ Note: Line 63 in [`steer_bot_hardware_gazebo.cpp`](https://github.com/CIR-KIT/st
 - [x] Create gazebo model with collision objects
 - [x] Add actuators to Joints
 - [x] Implement ackermann steering mechanism
-- [ ] Add sensors
+- [x] Add sensors
 - [ ] Tune controller parameters for accurate control
 - [ ] Final testing
