@@ -41,17 +41,6 @@
 
     <!-- Rear wheel - Bicycle model -->
     <link name="rear_wheel">
-        <!-- <inertial>
-            <mass value="1" />
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <inertia ixx="0.002433" ixy="0" ixz="0" iyy="0.0032" iyz="0" izz="0.002433" />
-        </inertial>
-        <collision>
-            <origin xyz="0 0 0" rpy="1.57075 0 0" />
-            <geometry>
-                <cylinder length="0.1" radius="0.08" />
-            </geometry>
-        </collision> -->
         <visual>
             <origin xyz="0 0 0" rpy="1.57075 0 0" />
             <geometry>
