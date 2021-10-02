@@ -6,6 +6,7 @@ Getting Started
 ```
 roslaunch igvc_bolt gazebo.launch
 ```
+https://user-images.githubusercontent.com/79641410/135726277-3781222a-36f0-491e-a9dc-07ee39049a54.mp4
 
 #### To visualize simulaion in rviz, run
 ```
