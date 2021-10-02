@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<robot name="bolt" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Rear wheel - Bicycle -->
+    <joint name="rear_wheel_joint" type="continuous">
+        <axis xyz="0 1 0" />
+        <parent link="chassis" />
+        <child link="rear_wheel" />
+        <origin xyz="-1.0 0 0.01" rpy="0 0 0" />
+    </joint>
+    <transmission name="rear_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="rear_wheel_joint_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="rear_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+    
+    <!-- Rear right & left wheels -->
+    <transmission name="rear_right_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rear_right_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rear_right_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="rear_left_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rear_left_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rear_left_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <!-- ************************************************************************************ -->
+
+    <!-- Front steer - Bicycle -->
+    <transmission name="front_steer_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="front_steer_joint_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="front_steer_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <!-- Front left steer and wheel -->
+    <transmission name="front_left_steer_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="front_left_steer_joint_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="front_left_steer_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="front_left_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_left_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="front_left_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- Front right wheel & steer -->
+    <transmission name="front_right_steer_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="front_right_steer_joint_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+        <joint name="front_right_steer_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+    </transmission>
+
+    <transmission name="front_right_wheel_joint_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="front_right_wheel_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="front_right_wheel_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+</robot>
