@@ -1,0 +1,27 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+
+	<model name="igvc_track">
+
+		<static>true</static>
+
+		<link name="base_link">
+
+			<visual name="track">
+                <origin xyz="0.0 0.0 -0.01" rpy="0.0 0.0 0.0"/>
+				<geometry>
+					<mesh>
+						<uri>model://bolt_lanes/meshes/Bolt_lanes.dae</uri>
+						<scale>1.0 1.0 1.0</scale>
+					</mesh>
+				</geometry>
+				<material>
+					<ambient>1 1 1 1</ambient>
+            				<diffuse>0.87 1 0.85 1</diffuse>
+            				<specular>0.2 0.2 0.2 64</specular>
+				</material>
+			</visual>
+		</link>
+	</model>
+
+</sdf>

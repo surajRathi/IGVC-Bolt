@@ -1,0 +1,17 @@
+material GroundPlane/Image
+        {
+          technique
+          {
+            pass
+            {
+              
+              texture_unit
+          	{
+          		texture grass.jpg
+          		scale 0.1 0.1
+          	}	
+ 
+            }
+          }
+          
+        }
