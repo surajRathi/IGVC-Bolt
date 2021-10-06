@@ -29,6 +29,8 @@ roslaunch igvc_bolt display.launch
 ## Controller
 
 Ackermann steering model is implemented using `ROS Control` with [`steer_bot_hardware_gazebo`](http://wiki.ros.org/steer_bot_hardware_gazebo) and [`ackermann_steer_controller`](http://wiki.ros.org/ackermann_steering_controller)
+
+Required Packages: [steer_bot_hardware_gazebo](https://github.com/CIR-KIT/steer_drive_ros/tree/kinetic-devel/steer_bot_hardware_gazebo)
 * ##### Subscribed topics
   - `cmd_vel`
 * ##### Published topics
