@@ -53,8 +53,8 @@
             <camera name="camera_front_left">
                 <horizontal_fov>2</horizontal_fov>
                 <image>
-                    <width>1200</width>
-                    <height>800</height>
+                    <width>1920</width>
+                    <height>1080</height>
                     <format>R8G8B8</format>
                 </image>
                 <clip>
@@ -91,8 +91,8 @@
             <camera name="camera_front_right">
                 <horizontal_fov>2</horizontal_fov>
                 <image>
-                    <width>1200</width>
-                    <height>800</height>
+                    <width>1920</width>
+                    <height>1080</height>
                     <format>R8G8B8</format>
                 </image>
                 <clip>
