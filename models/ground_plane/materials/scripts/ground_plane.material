@@ -7,7 +7,7 @@ material GroundPlane/Image
               
               texture_unit
           	{
-          		texture grass.jpg
+          		texture asphalt2.jpg
           		scale 0.1 0.1
           	}	
  

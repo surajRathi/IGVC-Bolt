@@ -19,7 +19,7 @@
         <!-- Gazebo  -->
         <include file="$(find gazebo_ros)/launch/empty_world.launch">
             <arg name="world_name" default="$(find igvc_bolt)/worlds/Lane1.world" />
-            
+
         </include>
 
         <!-- Load the robot description -->
@@ -39,6 +39,9 @@
             <param name="publish_frequency" value="50.0" />
         </node>
 
+        <!-- Joint state publisher -->
+        <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
         <!-- Launch a rqt steering GUI for publishing to /steer_bot/steer_drive_controller/cmd_vel -->
         <node pkg="rqt_robot_steering" type="rqt_robot_steering" name="rqt_robot_steering">
             <param name="default_topic" value="$(arg namespace)/ackermann_steering_controller/cmd_vel" />
@@ -49,7 +52,7 @@
                 -gazebo_namespace $(arg namespace)/gazebo
                 -x $(arg x) -y $(arg y) -z $(arg z)
                 -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)" respawn="false" output="screen" />
-        
+
 
         <!-- Rviz -->
         <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz" />
